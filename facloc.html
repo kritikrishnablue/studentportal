@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Location</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<style> 
+
+    body {
+    background:  #2c3e50; /* Light background */
+}
+    
+    /* Header Styling */
+    .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #search-bar {
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px solid #34495e;
+        margin-left: 22vw;
+        margin-top: 10vh;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        margin-top: 8vh;
+        }
+        
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        
+    main {
+    padding-left: 260px; /* Make sure main content is not under the sidebar */
+    padding-top: 20px;
+    }
+    h1{
+    font: size 2.5em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin:0;  
+    text-align: center;
+    }
+    
+    /* Sidebar Navigation */
+    /* Sidebar Navigation */
+    nav.main-nav {
+    width: 240px;
+    background-color: #34495e;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -240px; /* Adjust this to match the width of the sidebar */
+    padding-top: 30px;
+    transition: left 0.3s ease; /* Apply transition to left */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 90;
+    }
+    
+    .main-nav.active {
+    left: 0; /* Show sidebar */
+    }
+    
+    /* Hamburger Menu Icon */
+    .ham-menu {
+    height: 50px;
+    width: 40px;
+    margin-left:0;
+    position:fixed;
+    top: 0vh;
+    z-index: 101;
+    }
+    .ham-menu span {
+    height: 5px;
+    width: 100%;
+    background-color:#fff;
+    border-radius: 25px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s ease;
+    }
+    
+    .ham-menu span:nth-child(1) {
+    top: 25%;
+    }
+    
+    .ham-menu span:nth-child(2) {
+    top: 50%;
+    }
+    
+    .ham-menu span:nth-child(3) {
+    top: 75%;
+    }
+    
+    .ham-menu.active span {
+    background-color: white;
+    }
+    
+    .ham-menu.active span:nth-child(1) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    }
+    
+    .ham-menu.active span:nth-child(2) {
+    opacity: 0;
+    }
+    
+    .ham-menu.active span:nth-child(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+            bottom: -30px;
+    }
+    
+    nav ul li {
+        margin-bottom: 15px;
+    }
+    
+    nav ul li a, nav ul li button {
+        display: block;
+        padding: 12px 20px;
+        text-decoration: none;
+        color: #ecf0f1;
+        font-size: 1.2em;
+        font-weight: 600;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+        border-radius: 4px;
+    }
+    
+    nav ul li a:hover, nav ul li button:hover {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        transform: translateX(10px);
+    }
+    
+    nav ul li.active a {
+        background-color: #2980b9;
+        color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .dropdown-content {
+        display: none;
+        flex-direction: column;
+        padding-left: 20px;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown-content a {
+        padding: 8px 20px;
+        font-size: 1em;
+        color: #bdc3c7;
+        background-color: #2c3e50;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #2980b9;
+        color: white;
+        border-radius: 4px;
+    }
+    h2, h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
+    
+    /*notification bell*/
+    #notificationbell{
+        background-color: #2c3e50;
+        color: #f4f6f8;
+        border:0;
+        position: fixed;
+        left: 95vw;
+    }
+    
+    p{
+        color: #fff;
+    }
+    h2, h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+    
+    #facultylocation {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2.5em;
+        font-weight: bold;
+         letter-spacing: 1.5px;
+        margin-top: 0; 
+        margin-right: 0;
+       padding: 2px ; /* Adjust spacing inside header */
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: #2c3e50;
+    }
+    
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #2c3e50;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    #faculty-location-result {
+        text-align: center;
+    }
+    
+    #faculty-location-result h3 {
+        color: #2c3e50;
+    }
+    
+    #location-output {
+        font-size: 18px;
+        color: #7f8c8d;
+        padding: 0;
+        margin: 0;
+    }
+    #search-locationbtn{
+        background-color:  #2c3e50;
+        color: #fff;
+        border-radius: 15px;
+        padding: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        nav {
+            width: 60px;
+        }
+        main {
+            padding-left: 80px;
+        }
+        nav ul li a, nav ul li button {
+            font-size: 0.9em;
+            padding: 8px;
+        }
+        .course-card {
+            width: calc(50% - 10px);
+        }
+    }
+    
+    @media (max-width: 500px) {
+        nav {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+        main {
+            padding-left: 0;
+            padding-top: 20px;
+        }
+        .courses {
+            flex-direction: column;
+        }
+        .course-card {
+            width: 100%;
+        }
+    }</style>
+<body>
+      <!-- Header Section -->
+<header>
+    <!-- <h1>STUDENT PORTAL</h1> -->
+    <button id="notificationbell"<span class="material-symbols-outlined">notifications</span></button></h1>
+    <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+       <div class="header">
+        <input type="text" placeholder="Search" id="search-bar">
+        <div class="profile">
+            <p color>John Doe <span>3rd year</span></p>
+            <img src="panda photo.png" alt="Profile Image">
+        </div>
+       </div>
+       
+</header>
+                 <!-- Sidebar Navigation -->
+             <nav class="main-nav">
+             <!-- Main Nav Content -->
+            <ul>
+                <li><button id="homebtn">HOME</button></li>
+                <li class="dropdown">
+                    <button id="attbtn" >Attendance</button>
+                    <div class="dropdown-content">
+                        <a href="#">Monthly Attendance</a>
+                        <a href="#">Semester Attendance</a>
+                        <a href="#">Absence Details</a>
+                    </div>
+                
+                </li>
+                <li><button id="performancebtn">Performance</button></li>
+                <li class="dropdown">
+                    <button>Courses</button>
+                    <div class="dropdown-content">
+                        <a href="#">English</a>
+                    <a href="#">Mathematics</a>
+                    <a href="#">Hindi</a>
+                    <a href="#">Science</a>
+                    <a href="#">Computer Science</a>
+                    </div>
+                </li>
+                <li><button>Library</button></li>
+                <li><button>Events</button></li>
+                <li class="dropdown">
+                    <button>Student Support</button>
+                    <div class="dropdown-content">
+                        <a href="#">Faculty Location</a>
+                        <a href="#">Register Complaint</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+                </li>
+                <li><button>Logout</button></li>
+            </ul>
+        </nav>
+        </div>
+    <div class="container">
+        <h1 id="facultylocation">Find Faculty Location</h1>
+        
+        <form id="faculty-search-form">
+            <label for="faculty-name">Enter Faculty Name:</label>
+            <input type="text" id="faculty-name" name="faculty-name" placeholder="Faculty Name">
+        <p id="location-output">Please enter a faculty name to search.</p>
+        <button id="search-locationbtn" type="submit">Search</button>
+        <div id="faculty-location-result">
+            </div>
+    </form>   
+    </div>
+
+        <script>
+            let homebtn=document.getElementById("homebtn");
+    homebtn.onclick=()=>{
+        const homeURL="index.html";
+        window.open(homeURL,"_blank");
+    }
+            let attbtn=document.getElementById("attbtn");
+    attbtn.onclick=()=>{
+        const attendanceURL="att.html";
+        window.open(attendanceURL,"_blank");
+    }
+    let performancebtn=document.getElementById("performancebtn");
+    performancebtn.onclick=()=>{
+        const performanceURL="performance.html";
+        window.open(performanceURL,"_blank");
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamMenu = document.querySelector(".ham-menu");
+        const offScreenMenu = document.querySelector(".main-nav");
+    
+        hamMenu.addEventListener("click", () => {
+            hamMenu.classList.toggle("active");
+            offScreenMenu.classList.toggle("active");
+        });
+    });
+    document.getElementById("faculty-search-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const facultyName = document.getElementById("faculty-name").value;
+        
+        if (facultyName) {
+            // Example faculty data (in a real-world scenario, this could be fetched from a database)
+            const facultyLocations = {
+                "John Doe": "Room 101, Science Building",
+                "Jane Smith": "Room 202, Arts Building",
+                "Dr. Albert Johnson": "Room 303, Engineering Building"
+            };
+            function displayText() {
+  var text = document.getElementById("faculty-location-result");
+  text.style.display = "block";             
+            }
+            const search=document.getElementById("search").onclick=displayText();
+
+            const locationOutput = document.getElementById("location-output");
+            
+            if (facultyLocations[facultyName]) {
+                locationOutput.textContent = `${facultyName} is located at ${facultyLocations[facultyName]}`;
+            } else {
+                locationOutput.textContent = `Location for ${facultyName} not found.`;
+            }
+        } else {
+            alert("Please enter a faculty name.");
+        }
+    });
+</script>    
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Login</title>
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:  #2c3e50; /* Light background */
+}
+
+.login-container {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.login-form {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 70vh;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.social-login {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.google {
+    background: #4285f4;
+    color: white;
+}
+
+.separator {
+    margin: 20px 0;
+    color: #888;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background:#2c3e50; 
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+}
+
+.login-image {
+    width: 40vw;
+    height:70vh;
+    background: #eceff1; /* Soft grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-image img {
+    width: 80%;
+    object-fit: cover;
+}
+
+p {
+    margin-top: 20px;
+    color: #333;
+}
+
+p a {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+    </style><!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>WELCOME BACK</h2>
+            
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                
+                <input type="hidden" name="next" value="{% url 'home' %}">
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <p><a href="{% url 'register' %}">Need an account? Sign up</a></p>
+        </div>
+        <div class="login-image">
+            <!-- Add an educational or student-themed image or graphics -->
+            <img src="{% static 'images\Screenshot 2024-09-01 132741.png' %}" alt="Educational Image">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME Dashboard</title>
+   <!-- <link rel="stylesheet" href="attstyle.css"> -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style> {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 0px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+.header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .search-bar {
+        padding: 10px;
+        border-radius: 20px;
+        border: 2px solid #34495e;
+    margin-left: 22vw;
+    margin-top: 10vh;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+    margin-top: 8vh;
+    }
+    
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+    
+main {
+padding-left: 260px; /* Make sure main content is not under the sidebar */
+padding-top: 20px;
+}
+h1{
+font: size 2.5em;
+font-weight: bold;
+letter-spacing: 1.5px;
+margin:0;  
+text-align: center;
+}
+
+/* Sidebar Navigation */
+/* Sidebar Navigation */
+nav.main-nav {
+width: 240px;
+background-color: #34495e;
+height: 100vh;
+position: fixed;
+top: 0;
+left: -240px; /* Adjust this to match the width of the sidebar */
+padding-top: 30px;
+transition: left 0.3s ease; /* Apply transition to left */
+display: flex;
+flex-direction: column;
+box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+z-index: 90;
+}
+
+.main-nav.active {
+left: 0; /* Show sidebar */
+}
+
+/* Hamburger Menu Icon */
+.ham-menu {
+height: 50px;
+width: 40px;
+margin-left:0;
+position:fixed;
+top: 0vh;
+z-index: 101;
+}
+.ham-menu span {
+height: 5px;
+width: 100%;
+background-color:#34495e;
+border-radius: 25px;
+position:absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+transition: .3s ease;
+}
+
+.ham-menu span:nth-child(1) {
+top: 25%;
+}
+
+.ham-menu span:nth-child(2) {
+top: 50%;
+}
+
+.ham-menu span:nth-child(3) {
+top: 75%;
+}
+
+.ham-menu.active span {
+background-color: white;
+}
+
+.ham-menu.active span:nth-child(1) {
+top: 50%;
+transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ham-menu.active span:nth-child(2) {
+opacity: 0;
+}
+
+.ham-menu.active span:nth-child(3) {
+top: 50%;
+transform: translate(-50%, -50%) rotate(-45deg);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+        bottom: -30px;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li a, nav ul li button {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    border-radius: 4px;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    transform: translateX(10px);
+}
+
+nav ul li.active a {
+    background-color: #2980b9;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 8px 20px;
+    font-size: 1em;
+    color: #bdc3c7;
+    background-color: #2c3e50;
+}
+
+.dropdown-content a:hover {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 4px;
+}
+h2, h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+.welcome {
+        background-color:#34495e;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        width:auto;
+        height:fit-content;
+        margin-left: 22vw;
+        margin-top:5vh;
+        
+    }
+    
+    .welcome h1 {
+        color: #fff;
+    }
+    
+    .welcome p {
+        color: #eee;
+    }
+    /* Enrolled Courses Section */
+.enrolled-courses, .exam-schedule {
+    margin-left: 20vw;
+    padding: 20px;
+    background-color: #f4f6f8;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.enrolled-courses h2, .exam-schedule h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.courses-container, .schedule-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.course-card, .exam-card {
+    background-color: #ffffff;
+    padding: 20px;
+    width: calc(20% - 10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.course-card:hover, .exam-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h3, .exam-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.course-card p, .exam-card p {
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .courses-container, .schedule-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card, .exam-card {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
+/*notification bell*/
+#notificationbell{
+    background-color: #2c3e50;
+    color: #f4f6f8;
+    border:0;
+    position: fixed;
+    left: 95vw;
+}
+
+
+h2, h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+@media (max-width: 768px) {
+    nav {
+        width: 60px;
+    }
+    main {
+        padding-left: 80px;
+    }
+    nav ul li a, nav ul li button {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    .course-card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 500px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    main {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+    .courses {
+        flex-direction: column;
+    }
+    .course-card {
+        width: 100%;
+    }
+   
+}</style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- <h1>STUDENT PORTAL</h1> -->
+        <button id="notificationbell"<span class="material-symbols-outlined">notifications</span></button></h1>
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+           <div class="header">
+            <input type="text" placeholder="Search" class="search-bar">
+            <div class="profile">
+                <p>John Doe <span>3rd year</span></p>
+                <img src="panda photo.png" alt="Profile Image">
+            </div>
+           </div>
+    </header>
+    <div class="container">
+
+             <!-- Sidebar Navigation -->
+             <nav class="main-nav">
+             <!-- Main Nav Content -->
+            <ul>
+                <li><button id="homebtn">HOME</button></li>
+                <li class="dropdown">
+                    <button id="attbtn" >Attendance</button>
+                </li>
+                <li><button id="performancebtn">Performance</button></li>
+                <li class="dropdown">
+                    <button>Courses</button>
+                    <div class="dropdown-content">
+                        <button id="englishbtn">English</button>
+                    <button id="mathsbtn">Mathematics</button>
+                    <button id="hindibtn">Hindi</button>
+                    <button id="scibtn">Science</button>
+                    <button id="compbtn">Computer Science</button>
+                    </div>
+                </li>
+                <!-- <li><button>Library</button></li>
+                <li><button>Events</button></li> -->
+                <li class="dropdown">
+                    <button>Student Support</button>
+                    <div class="dropdown-content">
+                        <button id="facultylocbtn">Faculty Location</button>
+                    <button id="regcomplaintbtn">Register Complaint</button>
+                    </div>
+                </li>
+                <li><button id="logoutbtn">Logout</button></li>
+            </ul>
+        </nav>
+
+        <section class="welcome">
+            <h1>Welcome back, John!</h1>
+            <p>Always stay updated in your student portal</p>
+            <p class="date">September 4, 2023</p>
+        </section>
+        <section class="enrolled-courses">
+            <h2>Your Enrolled Courses</h2>
+            <div class="courses-container">
+                <div class="course-card">
+                    <h3>English</h3>
+                    <p>Course ID: ENG101</p>
+                    <p>Instructor: Mr. Smith</p>
+                </div>
+                <div class="course-card">
+                    <h3>Mathematics</h3>
+                    <p>Course ID: MATH201</p>
+                    <p>Instructor: Ms. Davis</p>
+                </div>
+                <div class="course-card">
+                    <h3>Hindi</h3>
+                    <p>Course ID: HIN301</p>
+                    <p>Instructor: Mrs. Gupta</p>
+                </div>
+                <div class="course-card">
+                    <h3>Science</h3>
+                    <p>Course ID: SCI401</p>
+                    <p>Instructor: Dr. Lee</p>
+                </div>
+                <div class="course-card">
+                    <h3>Computer Science</h3>
+                    <p>Course ID: CS501</p>
+                    <p>Instructor: Dr. Johnson</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Exam Schedule Section -->
+        <section class="exam-schedule">
+            <h2>Upcoming Exam Schedule</h2>
+            <div class="schedule-container">
+                <div class="exam-card">
+                    <h3>English</h3>
+                    <p>Date: October 10, 2023</p>
+                    <p>Time: 10:00 AM - 12:00 PM</p>
+                </div>
+                <div class="exam-card">
+                    <h3>Mathematics</h3>
+                    <p>Date: October 12, 2023</p>
+                    <p>Time: 2:00 PM - 4:00 PM</p>
+                </div>
+                <div class="exam-card">
+                    <h3>Science</h3>
+                    <p>Date: October 14, 2023</p>
+                    <p>Time: 9:00 AM - 11:00 AM</p>
+                </div>
+                <div class="exam-card">
+                    <h3>Computer Science</h3>
+                    <p>Date: October 16, 2023</p>
+                    <p>Time: 1:00 PM - 3:00 PM</p>
+                </div>
+            </div>
+        </section>
+        <!-- Add this button somewhere in the HTML -->
+<button id="toggleExamBtn">Toggle Exam Schedule</button>
+
+
+    <script>
+        let homebtn=document.getElementById("homebtn");
+homebtn.onclick=()=>{
+    const homeURL="index.html";
+    window.open(homeURL,"_blank");
+}
+        let attbtn=document.getElementById("attbtn");
+attbtn.onclick=()=>{
+    const attendanceURL="att.html";
+    window.open(attendanceURL,"_blank");
+}
+let performancebtn=document.getElementById("performancebtn");
+performancebtn.onclick=()=>{
+    const performanceURL="performanceindex.html";
+    window.open(performanceURL,"_blank");
+}
+let englishbtn=document.getElementById("englishbtn");
+englishbtn.onclick=()=>{
+    const englishURL="englishindex.html";
+    window.open(englishURL,"_blank");
+}
+let mathsbtn=document.getElementById("mathsbtn");
+mathsbtn.onclick=()=>{
+    const mathsURL="mathsindex.html";
+    window.open(mathsURL,"_blank");
+}
+let hindibtn=document.getElementById("hindibtn");
+hindibtn.onclick=()=>{
+    const hindiURL="hindiindex.html";
+    window.open(hindiURL,"_blank");
+}
+let scibtn=document.getElementById("scibtn");
+scibtn.onclick=()=>{
+    const sciURL="scienceindex.html";
+    window.open(sciURL,"_blank");
+}
+let compbtn=document.getElementById("compbtn");
+compbtn.onclick=()=>{
+    const compURL="computersciindex.html";
+    window.open(compURL,"_blank");
+}
+let facultylocbtn=document.getElementById("facultylocbtn");
+facultylocbtn.onclick=()=>{
+    const faclocURL="facloc.html"
+    window.open(faclocURL,"_blank")
+}
+let regcomplaintbtn=document.getElementById("regcomplaintbtn");
+regcomplaintbtn.onclick=()=>{
+    const regcomplaintURL="regcomplaint.html"
+    window.open(regcomplaintURL,"_blank")
+}
+let logoutbtn=document.getElementById("logoutbtn");
+logoutbtn.onclick=()=>{
+    const logoutURL="login.html"
+    window.open(logoutURL,"_blank")
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const hamMenu = document.querySelector(".ham-menu");
+    const offScreenMenu = document.querySelector(".main-nav");
+
+    hamMenu.addEventListener("click", () => {
+        hamMenu.classList.toggle("active");
+        offScreenMenu.classList.toggle("active");
+    });
+});
+// JavaScript to toggle the exam schedule visibility
+document.getElementById('toggleExamBtn').addEventListener('click', () => {
+    const examScheduleSection = document.querySelector('.exam-schedule');
+    examScheduleSection.style.display = examScheduleSection.style.display === 'none' ? 'block' : 'none';
+});
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH Dashboard</title>
+   <!-- <link rel="stylesheet" href="attstyle.css"> -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style> 
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 0px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+.header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .search-bar {
+        padding: 10px;
+        border-radius: 20px;
+        border: 2px solid #34495e;
+    margin-left: 22vw;
+    margin-top: 10vh;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+    margin-top: 8vh;
+    }
+    
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+    
+main {
+padding-left: 260px; /* Make sure main content is not under the sidebar */
+padding-top: 20px;
+}
+h1{
+font: size 2.5em;
+font-weight: bold;
+letter-spacing: 1.5px;
+margin:0;  
+text-align: center;
+}
+
+/* Sidebar Navigation */
+/* Sidebar Navigation */
+nav.main-nav {
+width: 240px;
+background-color: #34495e;
+height: 100vh;
+position: fixed;
+top: 0;
+left: -240px; /* Adjust this to match the width of the sidebar */
+padding-top: 30px;
+transition: left 0.3s ease; /* Apply transition to left */
+display: flex;
+flex-direction: column;
+box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+z-index: 90;
+}
+
+.main-nav.active {
+left: 0; /* Show sidebar */
+}
+
+/* Hamburger Menu Icon */
+.ham-menu {
+height: 50px;
+width: 40px;
+margin-left:0;
+position: absolute;
+top: 0vh;
+z-index: 101;
+}
+.ham-menu span {
+height: 5px;
+width: 100%;
+background-color:#34495e;
+border-radius: 25px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+transition: .3s ease;
+}
+
+.ham-menu span:nth-child(1) {
+top: 25%;
+}
+
+.ham-menu span:nth-child(2) {
+top: 50%;
+}
+
+.ham-menu span:nth-child(3) {
+top: 75%;
+}
+
+.ham-menu.active span {
+background-color: white;
+}
+
+.ham-menu.active span:nth-child(1) {
+top: 50%;
+transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ham-menu.active span:nth-child(2) {
+opacity: 0;
+}
+
+.ham-menu.active span:nth-child(3) {
+top: 50%;
+transform: translate(-50%, -50%) rotate(-45deg);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+        bottom: -30px;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li a, nav ul li button {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    border-radius: 4px;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    transform: translateX(10px);
+}
+
+nav ul li.active a {
+    background-color: #2980b9;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 8px 20px;
+    font-size: 1em;
+    color: #bdc3c7;
+    background-color: #2c3e50;
+}
+
+.dropdown-content a:hover {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 4px;
+}
+h2, h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+.welcome {
+        background-color:#34495e;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        width:auto;
+        height:fit-content;
+        margin-left: 22vw;
+        margin-top:5vh;        
+    }
+    
+    .welcome h1 {
+        color: #fff;
+    }
+    
+    .welcome p {
+        color: #eee;
+    }
+    .courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.course-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 40px;
+    width: 250px;
+    box-shadow:0 -3px 25px #2c3e50;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin-left: 22vw;
+}
+
+.course-card:hover {
+    box-shadow:5px 0px 81px 17px#2c3e50;
+    transform: translateY(-5px);
+}
+
+.course-card p {
+    font-size: 1em;
+    margin-bottom: 8px;
+    font-weight: bolder;
+}
+
+.course-card span {
+    color: #666;
+    font-size: 1em;
+}
+canvas {
+    width: 200px;  /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+}
+
+
+
+/*notification bell*/
+#notificationbell{
+    background-color: #2c3e50;
+    color: #f4f6f8;
+    border:0;
+    position: fixed;
+    left: 95vw;
+}
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    margin-left: 22vw;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    margin-right: 22vw;
+}
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Styling for New Sections */
+section {
+    background-color: #ecf0f1;
+    padding: 20px;
+    margin-left: 22vw;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+        bottom: -30px;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li a, nav ul li button {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    border-radius: 4px;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    transform: translateX(10px);
+}
+
+nav ul li.active a {
+    background-color: #2980b9;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 8px 20px;
+    font-size: 1em;
+    color: #bdc3c7;
+    background-color: #2c3e50;
+}
+
+.dropdown-content a:hover {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 4px;
+}
+.main ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.main ul li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main ul li a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.main ul li a:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 60px;
+    }
+    main {
+        padding-left: 80px;
+    }
+    nav ul li a, nav ul li button {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    .course-card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 500px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    main {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- <h1>STUDENT PORTAL</h1> -->
+        <button id="notificationbell"<span class="material-symbols-outlined">notifications</span></button></h1>
+        <div class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+           <div class="header">
+            <input type="text" placeholder="Search" class="search-bar">
+            <div class="profile">
+                <p>John Doe <span>3rd year</span></p>
+                <img src="panda photo.png" alt="Profile Image">
+            </div>
+           </div>
+           <img src="" alt="" srcset="">
+    </header>
+    <div class="container">
+
+             <!-- Sidebar Navigation -->
+             <nav class="main-nav">
+             <!-- Main Nav Content -->
+            <ul>
+                <li><button id="homebtn">HOME</button></li>
+                <li class="dropdown">
+                    <button id="attbtn" >Attendance</button>
+                   
+                </li>
+                <li><button id="performancebtn">Performance</button></li>
+                <li class="dropdown">
+                    <button>Courses</button>
+                    <div class="dropdown-content">
+                        <button id="englishbtn">English</button>
+                    <button id="mathsbtn">Mathematics</button>
+                    <button id="hindibtn">Hindi</button>
+                    <button id="scibtn">Science</button>
+                    <button id="compbtn">Computer Science</button>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <button>Student Support</button>
+                    <div class="dropdown-content">
+                        <button id="facultylocbtn">Faculty Location</button>
+                        <button id="regcomplaintbtn">Register Complaint</button>
+                    </div>
+                </li>
+                <li><button id="logoutbtn">Logout</button></li>
+            </ul>
+        </nav>
+
+        <section class="welcome">
+            <h1>Welcome back, John!</h1>
+            <p>Always stay updated in your student portal</p>
+            <p class="date">September 4, 2023</p>
+        </section>
+        <div class="main">
+        <h2 id="attendance-heading">Attendance</h2>
+                <div class="courses">
+                    <div class="course-card">
+                        <p>ENGLISH</p>
+                        <canvas id="gaugeChartEng"></canvas>
+                    </div>
+        <section class="assignments">
+    <h2>Upcoming Assignments</h2>
+    <ul>
+        <li><strong>Essay on Shakespeare's Hamlet:</strong> Due October 10, 2023</li>
+        <li><strong>Poetry Analysis:</strong> Due October 20, 2023</li>
+        <li><strong>Grammar Quiz:</strong> Due November 1, 2023</li>
+    </ul>
+</section>
+
+<section class="resources">
+    <h2>Useful Resources</h2>
+    <ul>
+        <li><a href="https://www.grammarly.com" target="_blank">Grammarly - Grammar Check</a></li>
+        <li><a href="https://www.shmoop.com" target="_blank">Shmoop - Literature Guides</a></li>
+        <li><a href="https://www.thesaurus.com" target="_blank">Thesaurus - Find Synonyms</a></li>
+        <li><a href="https://www.sparknotes.com" target="_blank">SparkNotes - Literature Summaries</a></li>
+    </ul>
+</section>
+<section class="grades">
+    <h2>Recent Grades</h2>
+    <ul>
+        <li><strong>Shakespeare Essay:</strong> 85/100</li>
+        <li><strong>Grammar Quiz:</strong> 90/100</li>
+        <li><strong>Poetry Analysis:</strong> 88/100</li>
+    </ul>
+</section>
+<section class="study-groups">
+    <h2>Join a Study Group</h2>
+    <ul>
+        <li><strong>Hamlet Study Group:</strong> Meets on Mondays at 4 PM</li>
+        <li><strong>Grammar Practice:</strong> Meets on Wednesdays at 2 PM</li>
+        <li><strong>Poetry Enthusiasts:</strong> Meets on Fridays at 3 PM</li>
+    </ul>
+</section>
+<section class="feedback">
+    <h2>Have any Questions or Feedback?</h2>
+    <form>
+        <label for="feedback">Your Message:</label><br>
+        <textarea id="feedback" rows="4" cols="50" placeholder="Type your message here..."></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>       
+    let homebtn=document.getElementById("homebtn");
+homebtn.onclick=()=>{
+    const homeURL="index.html";
+    window.open(homeURL,"_blank");
+}
+        let attbtn=document.getElementById("attbtn");
+attbtn.onclick=()=>{
+    const attendanceURL="att.html";
+    window.open(attendanceURL,"_blank");
+}
+let performancebtn=document.getElementById("performancebtn");
+performancebtn.onclick=()=>{
+    const performanceURL="performanceindex.html";
+    window.open(performanceURL,"_blank");
+}
+let englishbtn=document.getElementById("englishbtn");
+englishbtn.onclick=()=>{
+    const englishURL="englishindex.html";
+    window.open(englishURL,"_blank");
+}
+let mathsbtn=document.getElementById("mathsbtn");
+mathsbtn.onclick=()=>{
+    const mathsURL="mathsindex.html";
+    window.open(mathsURL,"_blank");
+}
+let hindibtn=document.getElementById("hindibtn");
+hindibtn.onclick=()=>{
+    const hindiURL="hindiindex.html";
+    window.open(hindiURL,"_blank");
+}
+let scibtn=document.getElementById("scibtn");
+scibtn.onclick=()=>{
+    const sciURL="scienceindex.html";
+    window.open(sciURL,"_blank");
+}
+let compbtn=document.getElementById("compbtn");
+compbtn.onclick=()=>{
+    const compURL="computersciindex.html";
+    window.open(compURL,"_blank");
+}
+let facultylocbtn=document.getElementById("facultylocbtn");
+facultylocbtn.onclick=()=>{
+    const faclocURL="facloc.html"
+    window.open(faclocURL,"_blank")
+}
+let regcomplaintbtn=document.getElementById("regcomplaintbtn");
+regcomplaintbtn.onclick=()=>{
+    const regcomplaintURL="regcomplaint.html"
+    window.open(regcomplaintURL,"_blank")
+}
+let logoutbtn=document.getElementById("logoutbtn");
+logoutbtn.onclick=()=>{
+    const logoutURL="login.html"
+    window.open(logoutURL,"_blank")
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const hamMenu = document.querySelector(".ham-menu");
+    const offScreenMenu = document.querySelector(".main-nav");
+
+    hamMenu.addEventListener("click", () => {
+        hamMenu.classList.toggle("active");
+        offScreenMenu.classList.toggle("active");
+    });
+});
+
+// Chart data attendance
+const attendanceData = {
+    English: 84.05,
+    
+};
+
+// Common options and data function
+function createGaugeChart(ctx, attendancePercentage) {
+    const data = {
+        datasets: [{
+            data: [attendancePercentage, 100 - attendancePercentage],
+            backgroundColor: ['#C2185B', '#E0E0E0'],
+            borderWidth: 0,
+            cutout: '60%'
+        }]
+    };
+    const options = {
+    responsive: true,
+    aspectRatio: 2,
+    plugins: {
+        tooltip: { enabled: false },
+        legend: { display: false }
+    }
+};
+    const centerText = {
+        id: 'centerText',
+        afterDatasetsDraw(chart) {
+            const { ctx, chartArea: { left, right, top, bottom } } = chart;
+            const text = attendancePercentage.toFixed(2);
+            ctx.save();
+            ctx.font = 'bold 15px Arial';
+            ctx.fillStyle = '#000';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, (left + right) / 2, (top + bottom) / 2);
+        }
+    };
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options,
+        plugins: [centerText]
+    });
+}
+
+// Render charts for each subject
+createGaugeChart(document.getElementById('gaugeChartEng').getContext('2d'), attendanceData.English);
+
+    </script>
+</body>
+
+</html>             
+
+
